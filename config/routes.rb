@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get 'comments/new'
   get 'comments/create'
   get 'comments/edit'

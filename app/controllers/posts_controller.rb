@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:categories).all
     respond_to do |format|
-        format.html 
+        format.html
         format.json
     end
   end
@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @comment = Comment.new(post_id: params[:post_id])
   end
 
   # GET /posts/1/edit
@@ -28,7 +29,6 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    binding.pry
     @post = Post.new(post_params)
 
     respond_to do |format|
