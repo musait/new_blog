@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
       end
 
       def create
+        binding.pry
         @comment = @commentable.comments.new(comment_params)
         @comment.save
         redirect_back(fallback_location: root_path, notice: "Comment was added successfully")
@@ -20,7 +21,7 @@ class CommentsController < ApplicationController
 
       def find_commentable
         @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-        @commentable = Story.find_by_id(params[:story_id]) if params[:story_id]
+        @commentable = Post.find_by_id(params[:post_id]) if params[:post_id]
       end
 
 end
