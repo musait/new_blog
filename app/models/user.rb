@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :comments, dependent: :destroy
 
   attr_accessor :login
   # Include default devise modules. Others available are:
@@ -17,6 +18,6 @@ class User < ApplicationRecord
     end
   end
 
-  
+
 
 end

@@ -1,25 +1,22 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.includes(:categories).all
-    respond_to do |format|
-        format.html
-        format.json
-    end
+    @posts = Post.all
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
   end
 
   # GET /posts/new
   def new
     @post = Post.new
-    @comment = Comment.new(post_id: params[:post_id])
   end
 
   # GET /posts/1/edit

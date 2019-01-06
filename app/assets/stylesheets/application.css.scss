@@ -13,9 +13,45 @@
  */
 
 .card-body {
-
-  background-color: yellow;
+  display: flex;
+  background-color: #65b0ec;
+  margin-top: 20px;
+  margin-left: 25%;
+  border-color: black;
+  flex-flow: column;
+  justify-content: center;
+  height: 25%;
+  width: auto;
 }
+
+.card {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  height: auto;
+  margin-left: 35%;
+  margin-top: 5%;
+}
+
+.card-show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-color: black;
+  background-color: #7fbbec;
+  width: auto;
+  height: 50px;
+
+}
+
+.links {
+
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  margin-top: 5%;
+}
+
 
 nav {
   width: auto;
@@ -23,7 +59,23 @@ nav {
   margin-bottom: 40px;
 }
 
-.li.nav-item .connect-link {
+.formulaire {
   display: flex;
+  justify-content: space-around;
   align-items: center;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.signup-password {
+  display: flex;
+  justify-content: center;
+}
+
+.signup {
+  margin-right: 50px;
+}
+
+.btn_back{
+  margin-top: 10px;
 }
