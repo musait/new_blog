@@ -8,8 +8,8 @@
         <%= form.label :description %>
         <%= form.text_area :description, class:"form-control" %>
       </div>
+
       <div class="form-group">
-        <% binding.pry%>
         <%= form.label :categorie%>
         <%= form.collection_select :category_ids, Category.all, :id, :name, :prompt => "Category", :multiple => true,class:"form-control" %>
       </div>
