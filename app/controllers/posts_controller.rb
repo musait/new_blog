@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-  USERS = { "admin" => "password" }
-  before_action :authenticate, except: [:index, :show]
+  before_action :authorize_admin, only: :create
   before_action :authenticate_user!, except: [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
@@ -28,7 +27,6 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    if user.isAdmin==true
       @post = Post.new(post_params)
       respond_to do |format|
         if @post.save
@@ -39,9 +37,6 @@ class PostsController < ApplicationController
           format.json { render json: @post.errors, status: :unprocessable_entity }
         end
       end
-    else
-        redirect_to @post, notice: "Il n'y a que les admins qui peuvent créer un post"
-    end
   end
 
   # PATCH/PUT /posts/1
@@ -80,9 +75,8 @@ class PostsController < ApplicationController
     end
 
 
-    def authenticate
-      authenticate_or_request_with_http_digest do |username|
-        USERS[username]
-      end
+    def authorize_admin
+     return unless !current_user.admin?
+     redirect_to root_path, alert: 'Admins only!'
     end
 end
