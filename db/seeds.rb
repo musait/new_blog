@@ -8,3 +8,5 @@
 Category.delete_all
 first_category = Category.create(:name => "Category 1" )
 second_category = Category.create(:name => "Category 2" )
+
+User.create(email:"admin@admin.com",username:"admin",password:"password",password_confirmation:"password",admin:true)
